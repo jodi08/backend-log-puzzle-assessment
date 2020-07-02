@@ -26,8 +26,22 @@ def read_urls(filename):
     extracting the hostname from the filename itself, sorting
     alphabetically in increasing order, and screening out duplicates.
     """
-    # +++your code here+++
-    pass
+    #open file, read and save as f:
+    puzzle_urls = []
+    with open(filename, 'r') as f:
+        read_puzzle_file = f.read().split('\n') #read file
+        for line in read_puzzle_file:
+            pic_files = re.findall(r'GET \S+ HTTP', read_puzzle_file) #search file with regex
+            for path in paths:
+                print(path)
+
+        
+                
+    return 
+
+    read_urls()
+
+    
 
 
 def download_images(img_urls, dest_dir):
@@ -38,37 +52,40 @@ def download_images(img_urls, dest_dir):
     to show each local image file.
     Creates the directory if necessary.
     """
-    # +++your code here+++
+    # request url's from web server
+    # put files back together by alphabetizing
+    # make an index.html file with an img tag to be able to show image
+    
     pass
 
 
-def create_parser():
-    """Creates an argument parser object."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--todir',
-                        help='destination directory for downloaded images')
-    parser.add_argument('logfile', help='apache logfile to extract urls from')
+# def create_parser():
+#     """Creates an argument parser object."""
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument('-d', '--todir',
+#                         help='destination directory for downloaded images')
+#     parser.add_argument('logfile', help='apache logfile to extract urls from')
 
-    return parser
-
-
-def main(args):
-    """Parses args, scans for URLs, gets images from URLs."""
-    parser = create_parser()
-
-    if not args:
-        parser.print_usage()
-        sys.exit(1)
-
-    parsed_args = parser.parse_args(args)
-
-    img_urls = read_urls(parsed_args.logfile)
-
-    if parsed_args.todir:
-        download_images(img_urls, parsed_args.todir)
-    else:
-        print('\n'.join(img_urls))
+#     return parser
 
 
-if __name__ == '__main__':
-    main(sys.argv[1:])
+# def main(args):
+#     """Parses args, scans for URLs, gets images from URLs."""
+#     parser = create_parser()
+
+#     if not args:
+#         parser.print_usage()
+#         sys.exit(1)
+
+#     parsed_args = parser.parse_args(args)
+
+#     img_urls = read_urls(parsed_args.logfile)
+
+#     if parsed_args.todir:
+#         download_images(img_urls, parsed_args.todir)
+#     else:
+#         print('\n'.join(img_urls))
+
+
+# if __name__ == '__main__':
+#     main(sys.argv[1:])
