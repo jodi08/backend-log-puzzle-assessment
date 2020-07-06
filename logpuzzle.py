@@ -31,6 +31,7 @@ def read_urls(filename):
     puzzle_urls = []
     server = filename[re.search(r"_(.*?)", filename).span()[1]:]
     with open(filename, 'r') as f:
+        #find url, copy to file
         for line in f:
             url_result = re.findall(r'GET \S+ HTTP', line) #search file with regex
             for path in url_result:
